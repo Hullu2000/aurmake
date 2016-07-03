@@ -2,3 +2,16 @@
 git clone https://aur.archlinux.org/${1}.git
 cd $1
 makepkg
+echo -e "\n\n\n\n\n"
+echo -e "\e[1mWill install following files:"
+echo -e "\e[0m"
+ls *.pkg.tar.xz
+
+echo -e "\e[1m"
+read -p "Is this OK? [Y/N] " -n 1 -r
+echo -e "\e[0m"
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	sudo pacman -U *.pkg.tar.xz
+fi
+echo -e "\n"
